@@ -13,7 +13,7 @@ class ContactManager:
             with open(self.filename, "r") as f:
                 return json.load(f)
         return {}
-    
+
     def save_contacts(self):
         with open(self.filename, "w") as f:
             json.dump(self.contacts, f, indent=2)
@@ -22,8 +22,15 @@ class ContactManager:
         name = input("Enter contact name: ")
         phone = input("Enter phone number: ")
         email = input("Enter email address: ")
-        self.contacts[str(self.next_index)] = {"name": name, "phone": phone, "email": email}
-        print(f"Contact '{name}' added successfully with index {self.next_index}.")
+        self.contacts[str(self.next_index)] = {
+            "name": name,
+            "phone": phone,
+            "email": email
+        }
+        print(
+            f"Contact '{name}' added successfully "
+            f"with index {self.next_index}."
+        )
         self.next_index += 1
 
     def view_contacts(self):
@@ -42,8 +49,12 @@ class ContactManager:
         if index in self.contacts:
             print(f"Editing contact: {self.contacts[index]['name']}")
             name = input("Enter new name (press Enter to keep current): ")
-            phone = input("Enter new phone number (press Enter to keep current): ")
-            email = input("Enter new email address (press Enter to keep current): ")
+            phone = input(
+                "Enter new phone number (press Enter to keep current): "
+            )
+            email = input(
+                "Enter new email address (press Enter to keep current): "
+            )
             if name:
                 self.contacts[index]["name"] = name
             if phone:
@@ -89,9 +100,11 @@ class ContactManager:
             else:
                 print("Invalid choice. Please try again.")
 
+
 def main():
     manager = ContactManager()
     manager.run()
+
 
 if __name__ == "__main__":
     main()
