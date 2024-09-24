@@ -1,7 +1,6 @@
 import json
 import os
 
-
 class ContactManager:
     def __init__(self, filename="contacts.json"):
         self.filename = filename
@@ -27,10 +26,7 @@ class ContactManager:
             "phone": phone,
             "email": email
         }
-        print(
-            f"Contact '{name}' added successfully "
-            f"with index {self.next_index}."
-        )
+        print(f"Contact '{name}' added successfully with index {self.next_index}.")
         self.next_index += 1
 
     def view_contacts(self):
@@ -49,12 +45,8 @@ class ContactManager:
         if index in self.contacts:
             print(f"Editing contact: {self.contacts[index]['name']}")
             name = input("Enter new name (press Enter to keep current): ")
-            phone = input(
-                "Enter new phone number (press Enter to keep current): "
-            )
-            email = input(
-                "Enter new email address (press Enter to keep current): "
-            )
+            phone = input("Enter new phone number (press Enter to keep current): ")
+            email = input("Enter new email address (press Enter to keep current): ")
             if name:
                 self.contacts[index]["name"] = name
             if phone:
@@ -69,7 +61,7 @@ class ContactManager:
         index = input("Enter the index of the contact to delete: ")
         if index in self.contacts:
             name = self.contacts[index]["name"]
-            del self.contacts[index]
+            del self.contacts[index] 
             print(f"Contact '{name}' with index {index} deleted successfully.")
         else:
             print(f"Contact with index {index} not found.")
@@ -104,7 +96,6 @@ class ContactManager:
 def main():
     manager = ContactManager()
     manager.run()
-
 
 if __name__ == "__main__":
     main()
